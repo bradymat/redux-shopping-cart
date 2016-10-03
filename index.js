@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './components/app'
 import { createStore } from 'redux'
+var _ = require('lodash')
 
 
 const initialState = {
@@ -10,15 +11,17 @@ const initialState = {
 
 function reducer (state = 0, action) {
   switch (action.type) {
-    case 'INCREMENT':
-      return state + 1
-    case 'DECREMENT':
-      return state - 1
+    case 'ADD':
+      return state+random(action.value)
+    case 'REMOVE':
+      return state-random(action.value)
     default:
       return state
   }
 }
-
+function random (num) {
+  return _.random(0,num)
+}
 const store = createStore(reducer)
 const rootEl = document.querySelector('main')
 

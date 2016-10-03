@@ -12,7 +12,9 @@ class App extends Component {
     return (
       <div>
         <div>{store.getState()}</div>
-        <button onClick={() => store.dispatch({ type: 'ADD', payload: 1 }) }>add</button>
+        <input ref="query" type="text"/>
+        <button onClick={() => store.dispatch({ type: 'ADD', value: this.refs.query.value }) }>add</button>
+        <button onClick={() => store.dispatch({ type: 'REMOVE', value: this.refs.query.value }) }>remove</button>
       </div>
     )
 
